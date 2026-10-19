@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberSafe - Student Online Safety</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><span class="logo">CS</span><span>CyberSafe<small>Student Online Safety</small></span></div>
+  <button id="menuButton" class="menu-button" aria-label="Open navigation">☰</button>
+  <nav id="navigation">
+    <button class="nav-button active" data-page="home">Home</button>
+    <button class="nav-button" data-page="lessons">Lessons</button>
+    <button class="nav-button" data-page="tips">Safety Tips</button>
+    <button class="nav-button" data-page="quiz">Quiz</button>
+    <button class="nav-button" data-page="results">Results</button>
+    <button class="nav-button" data-page="admin">Admin</button>
+  </nav>
+  <button id="profileButton" class="profile-button">Guest / Sign in</button>
+</header>
+
+<main>
+  <section id="home" class="page visible">
+    <div class="welcome">
+      <div class="welcome-text">
+        <p class="label">CYBERSECURITY AWARENESS FOR STUDENTS<:</p>
+        <h1>Stay safe.<br>Think before you click.</h1>
+        <p>Learn simple ways to protect your accounts, personal information, and devices while using the internet.</p>
+        <div class="actions"><button class="primary" data-open="lessons">View lessons</button><button class="secondary" data-open="quiz">Take the quiz</button></div>
+      </div>
+      <div class="welcome-art"><div class="shield">✓</div><p>Pause · Check · Protect</p></div>
+    </div>
+    <div class="three-cards">
+      <article><span class="card-icon">🔎</span><h3>Recognize threats</h3><p>Learn about phishing, scams, and suspicious links.</p></article>
+      <article><span class="card-icon">🔐</span><h3>Protect your accounts</h3><p>Use stronger passwords and safer sign-in habits.</p></article>
+      <article><span class="card-icon">🧠</span><h3>Test your knowledge</h3><p>Answer a short quiz and review your score.</p></article>
+    </div>
+    <div class="section-title"><div><p class="label">GET STARTED</p><h2>Featured lessons</h2></div><button class="link-button" data-open="lessons">All lessons →</button></div>
+    <div id="featuredLessons" class="lesson-grid"></div>
+  </section>
+
+  <section id="lessons" class="page">
+    <div class="page-title"><p class="label">LEARNING MODULES</p><h1>Cybersecurity lessons ni kuya John</h1><p>Read each lesson and use the tips in your everyday online activities.</p></div>
+    <div class="search-row"><input type="search" id="lessonSearch" placeholder="Search lessons"><span id="lessonCount"></span></div>
+    <div id="lessonGrid" class="lesson-grid"></div>
+    <article id="lessonContent" class="lesson-content hidden"></article>
+  </section>
+
+  <section id="tips" class="page">
+    <div class="page-title"><p class="label">PRACTICAL ADVICE</p><h1>Everyday safety tips</h1><p>These small habits can help you stay safer online.</p></div>
+    <div class="tips-layout"><div id="tipsList" class="tips-list"></div>
+      <aside class="check-card"><h2>My checklist</h2><p>Check the habits you already follow.</p><div id="checkItems"></div><div class="progress"><div id="progressBar"></div></div><small id="progressText">0 of 6 completed</small></aside>
+    </div>
+    <div class="notice"><b>Need help?</b><p>If you think an account has been compromised, tell a trusted adult or school IT staff. Change the affected password from a trusted device and report the incident.</p></div>
+  </section>
+
+  <section id="quiz" class="page">
+    <div class="page-title"><p class="label">KNOWLEDGE CHECK</p><h1>CyberSafe quiz</h1><p>Answer the questions to check what you have learned.</p></div>
+    <div id="quizIntro" class="quiz-panel"><div class="quiz-icon">?</div><h2>Ready to begin?</h2><p>The quiz has 10 multiple-choice questions. Feedback is shown when you finish.</p><button id="startQuiz" class="primary">Start quiz</button></div>
+    <div id="quizPanel" class="quiz-panel hidden"></div>
+    <div id="quizFinished" class="quiz-panel hidden"></div>
+  </section>
+
+  <section id="results" class="page">
+    <div class="page-title"><p class="label">LEARNING PROGRESS</p><h1>Quiz results</h1><p>Your quiz attempts saved in this browser are listed here.</p></div>
+    <div id="resultStats" class="stats"></div>
+    <div class="table-panel"><div class="table-head"><h2>Attempt history</h2><button id="clearResults" class="secondary small">Clear history</button></div><div class="table-scroll"><table><thead><tr><th>Date</th><th>Score</th><th>Percentage</th><th>Result</th></tr></thead><tbody id="resultRows"></tbody></table></div></div>
+  </section>
+
+  <section id="admin" class="page">
+    <div class="page-title"><p class="label">CONTENT MANAGEMENT</p><h1>Admin panel</h1><p>Add learning content for this browser's version of the website.</p></div>
+    <div class="admin-layout">
+      <form id="lessonForm" class="form-panel"><h2>Add a lesson</h2>
+        <label>Lesson title<input name="title" required maxlength="80"></label>
+        <label>Category<select name="category"><option>Online Scams</option><option>Account Security</option><option>Privacy</option><option>Safe Browsing</option></select></label>
+        <label>Short description<input name="description" required maxlength="160"></label>
+        <label>Lesson content<textarea name="content" rows="5" required></textarea></label>
+        <button class="primary" type="submit">Add lesson</button>
+      </form>
+      <div class="form-panel"><h2>Manage lessons</h2><div id="adminLessonList"></div><button id="resetLessons" class="secondary">Restore default lessons</button></div>
+    </div>
+  </section>
+</main>
+
+<footer><b>CyberSafe</b><p>A student project about cybersecurity awareness and responsible internet use.</p><small>MADE BY JOHN CARLO APATAN</small></footer>
+
+<div id="profileModal" class="modal-backdrop hidden">
+  <div class="modal"><button id="closeModal" class="close-modal" aria-label="Close">×</button><span class="logo">CS</span><h2>Student profile</h2><p>Enter a name to personalize this browser session.</p><form id="profileForm"><label>Name<input name="name" required maxlength="50" placeholder="Your name"></label><button class="primary full" type="submit">Save name</button></form><small>This demo does not require a password.</small></div>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
